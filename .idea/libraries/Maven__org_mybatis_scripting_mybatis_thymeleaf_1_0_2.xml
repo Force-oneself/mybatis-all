@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.mybatis.scripting:mybatis-thymeleaf:1.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Tools/apache-maven-3.8.1/repository/org/mybatis/scripting/mybatis-thymeleaf/1.0.2/mybatis-thymeleaf-1.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Tools/apache-maven-3.8.1/repository/org/mybatis/scripting/mybatis-thymeleaf/1.0.2/mybatis-thymeleaf-1.0.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Tools/apache-maven-3.8.1/repository/org/mybatis/scripting/mybatis-thymeleaf/1.0.2/mybatis-thymeleaf-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

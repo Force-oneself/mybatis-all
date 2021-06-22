@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mybatis-spring-boot-sample-freemarker" />
+        <module name="mybatis" />
+        <module name="mybatis-spring-boot-sample-groovy" />
+        <module name="mybatis-spring-boot-sample-freemarker-legacy" />
+        <module name="mybatis-spring-boot-sample-kotlin" />
+        <module name="mybatis-spring-boot-starter" />
+        <module name="mybatis-spring-boot-sample-velocity" />
+        <module name="mybatis-spring-boot-test-autoconfigure" />
+        <module name="mybatis-spring-boot-sample-war" />
+        <module name="mybatis-spring-boot-starter-test" />
+        <module name="mybatis-spring-boot-sample-xml" />
+        <module name="mybatis-spring-boot-sample-web" />
+        <module name="mybatis-spring-boot-sample-annotation" />
+        <module name="mybatis-spring-boot-sample-velocity-legacy" />
+        <module name="mybatis-spring" />
+        <module name="mybatis-spring-boot-sample-thymeleaf" />
+        <module name="mybatis-spring-boot-autoconfigure" />
+      </profile>
+      <profile name="Annotation profile for mybatis-plus-samples" enabled="true">
+        <sourceOutputDir name="../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mybatis-plus-sample-active-record" />
+        <module name="mybatis-plus-sample-crud" />
+        <module name="mybatis-plus-sample-enum" />
+        <module name="mybatis-plus-sample-id-generator" />
+        <module name="mybatis-plus-sample-assembly" />
+        <module name="mybatis-plus-sample-wrapper" />
+        <module name="mybatis-plus-sample-quickstart-springmvc" />
+        <module name="mybatis-plus-sample-resultmap" />
+        <module name="mybatis-plus-sample-no-spring" />
+        <module name="mybatis-plus-sample-generator" />
+        <module name="mybatis-plus-sample-sequence" />
+        <module name="mybatis-plus-sample-performance-analysis" />
+        <module name="mybatis-plus-sample-logic-delete" />
+        <module name="mybatis-plus-sample-quickstart" />
+        <module name="mybatis-plus-sample-typehandler" />
+        <module name="mybatis-plus-sample-deluxe" />
+        <module name="mybatis-plus-sample-tenant" />
+        <module name="mybatis-plus-sample-execution-analysis" />
+        <module name="mybatis-plus-sample-auto-fill-metainfo" />
+        <module name="mybatis-plus-sample-optimistic-locker" />
+        <module name="mybatis-plus-sample-reduce-springmvc" />
+        <module name="mybatis-plus-sample-pagination" />
+        <module name="mybatis-plus-sample-sql-injector" />
+        <module name="mybatis-plus-sample-dynamic-tablename" />
+        <module name="mybatis-plus-sample-pagehelper" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mybatis" target="1.8" />
+      <module name="mybatis-parent" target="1.8" />
+      <module name="mybatis-plus-sample-active-record" target="1.8" />
+      <module name="mybatis-plus-sample-assembly" target="1.8" />
+      <module name="mybatis-plus-sample-auto-fill-metainfo" target="1.8" />
+      <module name="mybatis-plus-sample-crud" target="1.8" />
+      <module name="mybatis-plus-sample-deluxe" target="1.8" />
+      <module name="mybatis-plus-sample-dynamic-tablename" target="1.8" />
+      <module name="mybatis-plus-sample-enum" target="1.8" />
+      <module name="mybatis-plus-sample-execution-analysis" target="1.8" />
+      <module name="mybatis-plus-sample-generator" target="1.8" />
+      <module name="mybatis-plus-sample-id-generator" target="1.8" />
+      <module name="mybatis-plus-sample-logic-delete" target="1.8" />
+      <module name="mybatis-plus-sample-no-spring" target="1.8" />
+      <module name="mybatis-plus-sample-optimistic-locker" target="1.8" />
+      <module name="mybatis-plus-sample-pagehelper" target="1.8" />
+      <module name="mybatis-plus-sample-pagination" target="1.8" />
+      <module name="mybatis-plus-sample-performance-analysis" target="1.8" />
+      <module name="mybatis-plus-sample-quickstart" target="1.8" />
+      <module name="mybatis-plus-sample-quickstart-springmvc" target="1.8" />
+      <module name="mybatis-plus-sample-reduce-springmvc" target="1.8" />
+      <module name="mybatis-plus-sample-resultmap" target="1.8" />
+      <module name="mybatis-plus-sample-sequence" target="1.8" />
+      <module name="mybatis-plus-sample-sql-injector" target="1.8" />
+      <module name="mybatis-plus-sample-tenant" target="1.8" />
+      <module name="mybatis-plus-sample-typehandler" target="1.8" />
+      <module name="mybatis-plus-sample-wrapper" target="1.8" />
+      <module name="mybatis-plus-samples" target="1.8" />
+      <module name="mybatis-spring" target="1.8" />
+      <module name="mybatis-spring-boot" target="1.8" />
+      <module name="mybatis-spring-boot-autoconfigure" target="1.8" />
+      <module name="mybatis-spring-boot-sample-annotation" target="1.8" />
+      <module name="mybatis-spring-boot-sample-freemarker" target="1.8" />
+      <module name="mybatis-spring-boot-sample-freemarker-legacy" target="1.8" />
+      <module name="mybatis-spring-boot-sample-groovy" target="1.8" />
+      <module name="mybatis-spring-boot-sample-kotlin" target="1.8" />
+      <module name="mybatis-spring-boot-sample-thymeleaf" target="1.8" />
+      <module name="mybatis-spring-boot-sample-velocity" target="1.8" />
+      <module name="mybatis-spring-boot-sample-velocity-legacy" target="1.8" />
+      <module name="mybatis-spring-boot-sample-war" target="1.8" />
+      <module name="mybatis-spring-boot-sample-web" target="1.8" />
+      <module name="mybatis-spring-boot-sample-xml" target="1.8" />
+      <module name="mybatis-spring-boot-samples" target="1.8" />
+      <module name="mybatis-spring-boot-starter" target="1.8" />
+      <module name="mybatis-spring-boot-starter-test" target="1.8" />
+      <module name="mybatis-spring-boot-test-autoconfigure" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
