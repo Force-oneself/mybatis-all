@@ -96,6 +96,7 @@ public class XMLConfigBuilder extends BaseBuilder {
       throw new BuilderException("Each XMLConfigBuilder can only be used once.");
     }
     parsed = true;
+    // Mapper全局配置configuration标签的解析
     parseConfiguration(parser.evalNode("/configuration"));
     return configuration;
   }

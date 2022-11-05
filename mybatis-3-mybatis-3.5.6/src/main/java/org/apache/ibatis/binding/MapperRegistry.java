@@ -64,11 +64,12 @@ public class MapperRegistry {
       }
       boolean loadCompleted = false;
       try {
+        // 添加Mapper代理工厂类提供后续反射实例化
         knownMappers.put(type, new MapperProxyFactory<>(type));
         // It's important that the type is added before the parser is run
         // otherwise the binding may automatically be attempted by the
         // mapper parser. If the type is already known, it won't try.
-        // 注解的扫描
+        // Force-MyBatis Mapper注解SQL的扫描
         MapperAnnotationBuilder parser = new MapperAnnotationBuilder(config, type);
         parser.parse();
         loadCompleted = true;

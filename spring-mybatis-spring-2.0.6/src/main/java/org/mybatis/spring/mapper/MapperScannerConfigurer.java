@@ -21,6 +21,7 @@ import java.lang.annotation.Annotation;
 import java.util.Map;
 import java.util.Optional;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.PropertyValue;
@@ -91,6 +92,9 @@ import org.springframework.util.StringUtils;
 public class MapperScannerConfigurer
     implements BeanDefinitionRegistryPostProcessor, InitializingBean, ApplicationContextAware, BeanNameAware {
 
+  /**
+   * 需要扫描@Mapper的包
+   */
   private String basePackage;
 
   private boolean addToConfig = true;
@@ -105,6 +109,9 @@ public class MapperScannerConfigurer
 
   private String sqlSessionTemplateBeanName;
 
+  /**
+   * 设置的路径扫描的注解，目前源码设置的是{@link Mapper}
+   */
   private Class<? extends Annotation> annotationClass;
 
   private Class<?> markerInterface;
@@ -351,11 +358,13 @@ public class MapperScannerConfigurer
   @Override
   public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) {
     if (this.processPropertyPlaceHolders) {
+      // 处理配置符
       processPropertyPlaceHolders();
     }
 
     ClassPathMapperScanner scanner = new ClassPathMapperScanner(registry);
     scanner.setAddToConfig(this.addToConfig);
+    // 设置是 @Mapper
     scanner.setAnnotationClass(this.annotationClass);
     scanner.setMarkerInterface(this.markerInterface);
     scanner.setSqlSessionFactory(this.sqlSessionFactory);
@@ -364,6 +373,7 @@ public class MapperScannerConfigurer
     scanner.setSqlSessionTemplateBeanName(this.sqlSessionTemplateBeanName);
     scanner.setResourceLoader(this.applicationContext);
     scanner.setBeanNameGenerator(this.nameGenerator);
+    // 设置扫描出来的Mapper 解析成 MapperFactoryBean 的
     scanner.setMapperFactoryBeanClass(this.mapperFactoryBeanClass);
     if (StringUtils.hasText(lazyInitialization)) {
       scanner.setLazyInitialization(Boolean.valueOf(lazyInitialization));
@@ -372,6 +382,7 @@ public class MapperScannerConfigurer
       scanner.setDefaultScope(defaultScope);
     }
     scanner.registerFilters();
+    // 扫描符合@Mapper的Bean
     scanner.scan(
         StringUtils.tokenizeToStringArray(this.basePackage, ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS));
   }

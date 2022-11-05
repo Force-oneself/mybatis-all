@@ -112,6 +112,9 @@ public class MapperAnnotationBuilder {
     this.type = type;
   }
 
+  /**
+   * Mapper上的注解解析
+   */
   public void parse() {
     String resource = type.toString();
     if (!configuration.isResourceLoaded(resource)) {
@@ -121,6 +124,7 @@ public class MapperAnnotationBuilder {
       parseCache();
       parseCacheRef();
       for (Method method : type.getMethods()) {
+        // 桥接和默认方法都会被跳过解析
         if (!canHaveStatement(method)) {
           continue;
         }
@@ -129,6 +133,7 @@ public class MapperAnnotationBuilder {
           parseResultMap(method);
         }
         try {
+          // 开始解析方法注解
           parseStatement(method);
         } catch (IncompleteElementException e) {
           configuration.addIncompleteMethod(new MethodResolver(this, method));

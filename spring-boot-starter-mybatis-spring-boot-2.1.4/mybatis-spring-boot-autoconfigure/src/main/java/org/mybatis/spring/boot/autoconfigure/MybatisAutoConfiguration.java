@@ -86,10 +86,19 @@ public class MybatisAutoConfiguration implements InitializingBean {
 
   private static final Logger logger = LoggerFactory.getLogger(MybatisAutoConfiguration.class);
 
+  /**
+   * 配置文件
+   */
   private final MybatisProperties properties;
 
+  /**
+   * Mybatis 插件组件Bean
+   */
   private final Interceptor[] interceptors;
 
+  /**
+   * 类型处理器
+   */
   private final TypeHandler[] typeHandlers;
 
   private final LanguageDriver[] languageDrivers;
@@ -98,6 +107,9 @@ public class MybatisAutoConfiguration implements InitializingBean {
 
   private final DatabaseIdProvider databaseIdProvider;
 
+  /**
+   * MyBatis-Spring拓展接口ConfigurationCustomizer
+   */
   private final List<ConfigurationCustomizer> configurationCustomizers;
 
   public MybatisAutoConfiguration(MybatisProperties properties, ObjectProvider<Interceptor[]> interceptorsProvider,
@@ -161,8 +173,9 @@ public class MybatisAutoConfiguration implements InitializingBean {
       factory.setMapperLocations(this.properties.resolveMapperLocations());
     }
     Set<String> factoryPropertyNames = Stream
-        .of(new BeanWrapperImpl(SqlSessionFactoryBean.class).getPropertyDescriptors()).map(PropertyDescriptor::getName)
-        .collect(Collectors.toSet());
+            .of(new BeanWrapperImpl(SqlSessionFactoryBean.class).getPropertyDescriptors())
+            .map(PropertyDescriptor::getName)
+            .collect(Collectors.toSet());
     Class<? extends LanguageDriver> defaultLanguageDriver = this.properties.getDefaultScriptingLanguageDriver();
     if (factoryPropertyNames.contains("scriptingLanguageDrivers") && !ObjectUtils.isEmpty(this.languageDrivers)) {
       // Need to mybatis-spring 2.0.2+
@@ -175,7 +188,7 @@ public class MybatisAutoConfiguration implements InitializingBean {
       // Need to mybatis-spring 2.0.2+
       factory.setDefaultScriptingLanguageDriver(defaultLanguageDriver);
     }
-
+    // 构建SqlSessionFactory核心流程
     return factory.getObject();
   }
 
@@ -227,9 +240,13 @@ public class MybatisAutoConfiguration implements InitializingBean {
         packages.forEach(pkg -> logger.debug("Using auto-configuration base package '{}'", pkg));
       }
 
+      // Mapper自动扫描重点Bean
       BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(MapperScannerConfigurer.class);
+      // 占位符处理
       builder.addPropertyValue("processPropertyPlaceHolders", true);
+      // 需要处理的注解 @Mapper
       builder.addPropertyValue("annotationClass", Mapper.class);
+      // 需要扫描的路径
       builder.addPropertyValue("basePackage", StringUtils.collectionToCommaDelimitedString(packages));
       BeanWrapper beanWrapper = new BeanWrapperImpl(MapperScannerConfigurer.class);
       Set<String> propertyNames = Stream.of(beanWrapper.getPropertyDescriptors()).map(PropertyDescriptor::getName)

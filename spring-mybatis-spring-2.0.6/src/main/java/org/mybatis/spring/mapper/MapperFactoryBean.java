@@ -92,6 +92,7 @@ public class MapperFactoryBean<T> extends SqlSessionDaoSupport implements Factor
    */
   @Override
   public T getObject() throws Exception {
+    // Force-MyBatis 重点 MyBatis 通过 SqlSessionTemplate 获取 Mapper代理
     return getSqlSession().getMapper(this.mapperInterface);
   }
 

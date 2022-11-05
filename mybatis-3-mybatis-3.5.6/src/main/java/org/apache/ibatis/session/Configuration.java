@@ -698,6 +698,7 @@ public class Configuration {
     if (cacheEnabled) {
       executor = new CachingExecutor(executor);
     }
+    // Force-MyBatis 拓展点 插件的实现
     executor = (Executor) interceptorChain.pluginAll(executor);
     return executor;
   }

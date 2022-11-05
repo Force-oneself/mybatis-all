@@ -91,14 +91,20 @@ public class XMLMapperBuilder extends BaseBuilder {
   }
 
   public void parse() {
+    // 是否被加载过
     if (!configuration.isResourceLoaded(resource)) {
+      // mapper标签
       configurationElement(parser.evalNode("/mapper"));
       configuration.addLoadedResource(resource);
+      // 把namespace属性绑定到Mapper到注册中心
       bindMapperForNamespace();
     }
 
+    // 解析还未关联的<result-map>标签
     parsePendingResultMaps();
+    // 解析还未关联的<cache-ref>标签
     parsePendingCacheRefs();
+    // 解析CRUD标签与其他标签的关联
     parsePendingStatements();
   }
 
@@ -113,11 +119,14 @@ public class XMLMapperBuilder extends BaseBuilder {
         throw new BuilderException("Mapper's namespace cannot be empty");
       }
       builderAssistant.setCurrentNamespace(namespace);
+      // cache-ref标签
       cacheRefElement(context.evalNode("cache-ref"));
+      // cache标签
       cacheElement(context.evalNode("cache"));
       parameterMapElement(context.evalNodes("/mapper/parameterMap"));
       resultMapElements(context.evalNodes("/mapper/resultMap"));
       sqlElement(context.evalNodes("/mapper/sql"));
+      // CRUD标签的解析
       buildStatementFromContext(context.evalNodes("select|insert|update|delete"));
     } catch (Exception e) {
       throw new BuilderException("Error parsing Mapper XML. The XML location is '" + resource + "'. Cause: " + e, e);
@@ -135,8 +144,10 @@ public class XMLMapperBuilder extends BaseBuilder {
     for (XNode context : list) {
       final XMLStatementBuilder statementParser = new XMLStatementBuilder(configuration, builderAssistant, context, requiredDatabaseId);
       try {
+        // 解析CRUD标签
         statementParser.parseStatementNode();
       } catch (IncompleteElementException e) {
+        // 其中有些标签处理的关联问题需要在后续在解析
         configuration.addIncompleteStatement(statementParser);
       }
     }
@@ -429,6 +440,7 @@ public class XMLMapperBuilder extends BaseBuilder {
         // to prevent loading again this resource from the mapper interface
         // look at MapperAnnotationBuilder#loadXmlResource
         configuration.addLoadedResource("namespace:" + namespace);
+        // 添加Mapper代理工厂
         configuration.addMapper(boundType);
       }
     }
