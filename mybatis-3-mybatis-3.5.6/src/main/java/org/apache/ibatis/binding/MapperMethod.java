@@ -73,18 +73,23 @@ public class MapperMethod {
         break;
       }
       case SELECT:
+        // 返回类型是void
         if (method.returnsVoid() && method.hasResultHandler()) {
           executeWithResultHandler(sqlSession, args);
           result = null;
+          // 返回类型是Collection或者数组
         } else if (method.returnsMany()) {
           result = executeForMany(sqlSession, args);
+          // 返回类型是Map并有@MapKey标记
         } else if (method.returnsMap()) {
           result = executeForMap(sqlSession, args);
+          // 返回类型是Cursor
         } else if (method.returnsCursor()) {
           result = executeForCursor(sqlSession, args);
         } else {
           Object param = method.convertArgsToSqlCommandParam(args);
           result = sqlSession.selectOne(command.getName(), param);
+          // 返回类型是Optional
           if (method.returnsOptional()
               && (result == null || !method.getReturnType().equals(result.getClass()))) {
             result = Optional.ofNullable(result);
